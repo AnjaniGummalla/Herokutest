@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var Top_Level_CategorySchema = new mongoose.Schema({   
   
-  Category_Id: mongoose.Types.ObjectId(),
+  //Category_Id: mongoose.Types.ObjectId(),
   
   Category_Title: {
         type: String,
@@ -31,7 +31,7 @@ var Top_Level_CategorySchema = new mongoose.Schema({
     },
 });
 
-Top_Level_Category.plugin(timestamps);
+Top_Level_CategorySchema.plugin(timestamps);
 
 mongoose.model('Top_Level_Category', Top_Level_CategorySchema);
 

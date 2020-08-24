@@ -15,6 +15,7 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.0",
+    "mongoose-timestamp": "^0.6.0",
     "morgan": "~1.9.1"
   }
 }
