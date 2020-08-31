@@ -67,6 +67,46 @@ var SparesVendorSchema = new mongoose.Schema({
         minlength: 3,
         maxlength: 80
     },
+     City: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Pincode: {
+        type: Array,
+    },
+
+  Customer_Location: {
+        type: { type: String },
+        coordinates: []
+    },
+  State: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  lat: Number,
+
+  long: Number,
+  
+  Location_type:{
+    type:  String,
+    Default: "Home"
+  },
+
+  Country: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
 
 });
 
