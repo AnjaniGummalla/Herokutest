@@ -8,8 +8,9 @@ var CategoryModel = require('../models/ToplevelCategoryModel');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/test', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/datalist', async function(req, res, next) {
+  var datalist = await CategoryModel.find({});
+  res.json({msg:"list",Data : datalist})
 });
 router.post('/create',async function(req, res, next) {
 	let Data = {

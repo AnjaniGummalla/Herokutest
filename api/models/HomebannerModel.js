@@ -2,11 +2,9 @@ var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
-var Second_Level_CategorySchema = new mongoose.Schema({   
+var HomebannerSchema = new mongoose.Schema({   
   
-  //Second_level_Cat_Id: mongoose.Types.ObjectId(),
-  
-  Second_level_cat_title: {
+  Homebanner_Image: {
         type: String,
         required: true,
         trim: true,
@@ -14,21 +12,7 @@ var Second_Level_CategorySchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Top_level_cat_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'Top_Level_Category',
-        required: true
-    },
-
-  Top_level_cat_name:{
-        type: String,
-        required: false,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
-    },
-
-  Thumbnail_Path:{
+  Title: {
         type: String,
         required: true,
         trim: true,
@@ -36,17 +20,41 @@ var Second_Level_CategorySchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Large_Image_Path:{
+  Desc: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
     },
+
+  Status: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Date:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Time:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
 });
+HomebannerSchema.plugin(timestamps);
 
-Second_Level_CategorySchema.plugin(timestamps);
+mongoose.model('Homebanner', HomebannerSchema);
 
-mongoose.model('Second_Level_Category', Second_Level_CategorySchema);
-
-module.exports = mongoose.model('Second_Level_Category');
+module.exports = mongoose.model('Homebanner');

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var Third_Level_CategorySchema = new mongoose.Schema({   
   
-  Third_level_Cat_Id: mongoose.Types.ObjectId(),
+  //Third_level_Cat_Id: mongoose.Types.ObjectId(),
   
   Third_level_cat_title: {
         type: String,

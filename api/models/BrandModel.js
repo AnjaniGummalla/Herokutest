@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var BrandSchema = new mongoose.Schema({   
   
-  Brand_Id: mongoose.Types.ObjectId(),
+  //Brand_Id: mongoose.Types.ObjectId(),
   
   Brand_Name: {
         type: String,

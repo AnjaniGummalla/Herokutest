@@ -1,0 +1,103 @@
+var mongoose = require('mongoose');
+var timestamps = require('mongoose-timestamp');
+const Schema = mongoose.Schema;
+var CustomerSchema = new mongoose.Schema({   
+  
+  Name: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Customer_Location: [{
+          type: Schema.Types.ObjectId,
+          ref: 'CustomerLocation'
+      }],
+
+  Vehicle_Type_Status: Boolean,
+
+  Current_Location_Status: Boolean,
+
+  User_Status:Boolean,
+
+  Gender:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 1,
+        maxlength: 80
+    },
+
+  Vehicle_Type: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Email: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80,
+        unique: true
+    },
+
+  Password: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  DOB: {
+        type: String,
+        required: true,
+    },
+  
+  Address: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+  Type: {
+        type: Number,
+        required: true,
+    },
+
+  Phone: {
+        type: Number,
+        required: true,
+    },
+
+  Profile_Pic: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },,
+
+  OTP: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+});
+
+CustomerSchema.plugin(timestamps);
+
+mongoose.model('Customer', CustomerSchema);
+
+module.exports = mongoose.model('Customer');

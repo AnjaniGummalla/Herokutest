@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var GenerationSchema = new mongoose.Schema({   
   
-  Generation_Id: mongoose.Types.ObjectId(),
+  //Generation_Id: mongoose.Types.ObjectId(),
   
   Generation_Name: {
         type: String,
