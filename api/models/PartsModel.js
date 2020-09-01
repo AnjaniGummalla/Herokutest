@@ -33,6 +33,20 @@ var PartsSchema = new mongoose.Schema({
         minlength: 3,
         maxlength: 80
     },
+    Dimension:{
+        type: Number,
+        required: false,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+    Weight:{
+        type: Number,
+        required: false,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
     Part_top_cat_id: {
         type: Schema.Types.ObjectId,
         ref: 'Top_Level_Category',

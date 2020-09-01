@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
-var CustomerSchema = new mongoose.Schema({   
+var Customer_VehicleSchema = new mongoose.Schema({   
   
-  Name: {
+  Customer_Id: {
         type: String,
         required: true,
         trim: true,
@@ -11,9 +11,15 @@ var CustomerSchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  User_Status:Boolean,
+  Cus_Vehicle_Number:{
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
 
-  Gender:{
+  Cus_Vehicle_Type:{
         type: String,
         required: true,
         trim: true,
@@ -21,7 +27,7 @@ var CustomerSchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Email: {
+  Cus_Vehicle_Model: {
         type: String,
         required: true,
         trim: true,
@@ -30,7 +36,7 @@ var CustomerSchema = new mongoose.Schema({
         unique: true
     },
 
-  Password: {
+  Cus_Vehicle_Brand: {
         type: String,
         required: true,
         trim: true,
@@ -38,33 +44,12 @@ var CustomerSchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  DOB: {
+  Cus_Vehicle_Trim: {
         type: String,
         required: true,
     },
   
-  Address: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
-    },
-
-  Phone: {
-        type: Number,
-        required: true,
-    },
-
-  Profile_Pic: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
-    },,
-
-  OTP: {
+  Cus_Vehicle_Generation: {
         type: String,
         required: true,
         trim: true,
@@ -74,8 +59,8 @@ var CustomerSchema = new mongoose.Schema({
 
 });
 
-CustomerSchema.plugin(timestamps);
+Customer_VehicleSchema.plugin(timestamps);
 
-mongoose.model('Customer', CustomerSchema);
+mongoose.model('CustomerVehicle', Customer_VehicleSchema);
 
-module.exports = mongoose.model('Customer');
+module.exports = mongoose.model('CustomerVehicle');

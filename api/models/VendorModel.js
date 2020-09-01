@@ -79,7 +79,7 @@ var SparesVendorSchema = new mongoose.Schema({
         type: Array,
     },
 
-  Customer_Location: {
+  Vendor_Location: {
         type: { type: String },
         coordinates: []
     },
@@ -94,13 +94,16 @@ var SparesVendorSchema = new mongoose.Schema({
   lat: Number,
 
   long: Number,
-  
-  Location_type:{
-    type:  String,
-    Default: "Home"
-  },
 
   Country: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+
+GST_Number:{
         type: String,
         required: true,
         trim: true,

@@ -1,49 +1,29 @@
 var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
-const Schema = mongoose.Schema;
-var CustomerSchema = new mongoose.Schema({   
-  
-  Name: {
+const Schema = mongoose.Schema; 
+
+var VendorLocationSchema = new mongoose.Schema({  
+
+  Vendor_id:  {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
     },
-
-  User_Status:Boolean,
-
-  Gender:{
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 1,
-        maxlength: 80
-    },
-
-  Email: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80,
-        unique: true
-    },
-
-  Password: {
+  Pincode : {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
-    },
-
-  DOB: {
-        type: String,
-        required: true,
     },
   
-  Address: {
+  Vendor_Location: {
+        type: { type: String },
+        coordinates: []
+    },
+  State: {
         type: String,
         required: true,
         trim: true,
@@ -51,20 +31,33 @@ var CustomerSchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Phone: {
-        type: Number,
-        required: true,
-    },
+  lat: Number,
 
-  Profile_Pic: {
+  long: Number,
+
+  Location_Type: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
-    },,
+    },
+     Country: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
 
-  OTP: {
+  Street : {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
+    },
+  Near_By_Landmark : {
         type: String,
         required: true,
         trim: true,
@@ -74,8 +67,9 @@ var CustomerSchema = new mongoose.Schema({
 
 });
 
-CustomerSchema.plugin(timestamps);
+VendorLocationSchema.plugin(timestamps);
 
-mongoose.model('Customer', CustomerSchema);
+mongoose.model('VendorLocation', VendorLocationSchema);
 
-module.exports = mongoose.model('Customer');
+module.exports = mongoose.model('VendorLocation');
+
