@@ -14,14 +14,18 @@ var GenerationSchema = new mongoose.Schema({
         maxlength: 80
     },
     Generation_From:{
-        type: Schema.Types.ObjectId,
-        ref: 'Generation',
-        required: true
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
     },
     Generation_To:{
-        type: Schema.Types.ObjectId,
-        ref: 'Generation',
-        required: true
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 80
     },
     Model_Id:{
         type: Schema.Types.ObjectId,

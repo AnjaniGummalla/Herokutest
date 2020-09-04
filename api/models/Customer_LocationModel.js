@@ -3,10 +3,10 @@ var timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
 var CustomerLocationSchema = new mongoose.Schema({   
-  
-  City: String,
 
   Customer_id: String,
+
+  City: String,
 
   Pincode: String,
 
@@ -39,6 +39,7 @@ var CustomerLocationSchema = new mongoose.Schema({
 
 });
 CustomerLocationSchema.plugin(timestamps);
+
 CustomerLocationSchema.index({ "Customer_Location": "2dsphere" });
 mongoose.model('Customerlocation', CustomerLocationSchema);
 

@@ -15,7 +15,7 @@ var CustomerSchema = new mongoose.Schema({
 
   Gender:{
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 1,
         maxlength: 80
@@ -40,12 +40,12 @@ var CustomerSchema = new mongoose.Schema({
 
   DOB: {
         type: String,
-        required: true,
+        //required: true,
     },
   
   Address: {
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
@@ -53,20 +53,20 @@ var CustomerSchema = new mongoose.Schema({
 
   Phone: {
         type: Number,
-        required: true,
+        //required: true,
     },
 
   Profile_Pic: {
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
-    },,
+    },
 
   OTP: {
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 3,
         maxlength: 80

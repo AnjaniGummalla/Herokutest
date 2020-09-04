@@ -39,3 +39,10 @@ exports.response = (res, message) => {
         message
     });
 }
+exports.ServerResponse = (res, message) => {
+    res.send({
+        success: true,
+        code: 500,
+        message
+    });
+}

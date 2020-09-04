@@ -5,15 +5,23 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var CategoryRouter = require('./api/routes/index');
-var ToplevelCategoryRouter = require('./api/routes/toplevelcategory');
-var SecondlevelCategoryRouter = require('./api/routes/secondlevelcategory');
-var ThirdlevelCategoryRouter = require('./api/routes/thirdlevelcategory');
+var UserRouter = require('./api/routes/Users.routes');
+var Customer_VehicleRouter = require('./api/routes/CustomerVehicle.routes');
+var ToplevelCategoryRouter = require('./api/routes/TopLevelCategory.routes');
+var SecondlevelCategoryRouter = require('./api/routes/SecondLevelcCategory.routes');
+var ThirdlevelCategoryRouter = require('./api/routes/ThirdLevelCategory.routes');
 var usersRouter = require('./api/routes/users');
-var PartsRouter = require('./api/routes/parts');
-const productRoute = require('./api/routes/products');
-const dictionaryRoute = require('./api/routes/dictionary');
-const cartRoute = require('./api/routes/carts');
-const VehicletypeRoute = require('./api/routes/vehicletype');
+var PartsRouter = require('./api/routes/Parts.routes');
+const productRouter = require('./api/routes/products');
+const dictionaryRouter = require('./api/routes/dictionary');
+const cartRouter = require('./api/routes/carts');
+const VehicletypeRouter = require('./api/routes/VehicleType.routes');
+const VendorRouter = require('./api/routes/Vendor.routes');
+const BrandRouter = require('./api/routes/Brand.routes');
+const ClassRouter = require('./api/routes/Class.routes');
+const GenerationRouter = require('./api/routes/Generation.routes');
+const HomeBannerRouter = require('./api/routes/HomeBanner.routes');
+const VacalaLocationRouter = require('./api/routes/VacalaLocation.routes');
 var app = express();
 //DB connection
 const Mongoose = require("./databases/dbconnection");
@@ -29,13 +37,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/topcategory', ToplevelCategoryRouter);
-app.use('/api/vehicletype', VehicletypeRoute);
-app.use('/users', usersRouter);
-app.use('/api/products', productRoute);
-app.use('/api/dictionary', dictionaryRoute);
-app.use('/api/cart', cartRoute);
+app.use('/api/secondcategory', SecondlevelCategoryRouter);
+app.use('/api/vehicletype', VehicletypeRouter);
+app.use('/api/users', UserRouter);
+app.use('/api/products', productRouter);
+app.use('/api/dictionary', dictionaryRouter);
+app.use('/api/cart', cartRouter);
 app.use('/api/parts', PartsRouter);
-
+app.use('/api/cusvehicle', Customer_VehicleRouter);
+app.use('/api/vendor', VendorRouter);
+app.use('/api/brand', BrandRouter);
+app.use('/api/class', ClassRouter);
+app.use('/api/generation', GenerationRouter);
+app.use('/api/homebanner', HomeBannerRouter);
+app.use('/api/vacalalocation', VacalaLocationRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
