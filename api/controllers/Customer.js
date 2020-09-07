@@ -1,5 +1,5 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse, response,ServerResponse } = require('../lib/response');
+const { getAllResponse, createResponse, response,ServerResponse,updateResponse,getOneResponse } = require('../lib/response');
 const bcrypt = require("bcryptjs");
 const { check, validationResult} = require("express-validator/check");
 const jwt = require("jsonwebtoken");
@@ -61,9 +61,7 @@ const create =  async (req, res) => {
                 },
                 (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({
-                        token
-                    });
+                  createResponse(res,token,"Registration successfully");
                 }
             );
         } catch (err) {
@@ -86,6 +84,7 @@ const authlogin = async (req, res) => {
       let user = await User.findOne({
         Email
       });
+      console.log(user);
       if (!user)
        response(res, "User Not Exists");
 
@@ -107,9 +106,12 @@ const authlogin = async (req, res) => {
         },
         (err, token) => {
           if (err) throw err;
-          res.status(200).json({
-            token
-          });
+          const data = {
+            token: token,
+            user: user
+          }
+           getOneResponse(res, data);
+          
         }
       );
     } catch (e) {
@@ -118,6 +120,17 @@ const authlogin = async (req, res) => {
     }
   };
 
+const update = (req, res, next) => {
+  User.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
+    .then(user => {
+      if (!user) error404(res, "User not found with id " + req.params.id);
+      updateResponse(res, user, 'User updated successfully');
+    })
+    .catch(err => {
+      NotFoundInCatch(res, err, `user not found with id ${err.value}`);
+      error500(res, `Error updating user with id ${err.value}`);
+    });
+};
 const deleteDic = (req, res, next) => {
   Customer.findByIdAndRemove(req.params.id)
     .then(Customer => {
@@ -135,5 +148,6 @@ module.exports = {
   findAll,
   authlogin,
   create,
+  update,
   delete: deleteDic
 };

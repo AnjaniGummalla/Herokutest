@@ -10,7 +10,7 @@ var CustomerSchema = new mongoose.Schema({
         minlength: 3,
         maxlength: 80
     },
-
+    
   User_Status:Boolean,
 
   Gender:{

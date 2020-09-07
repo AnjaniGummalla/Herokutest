@@ -6,23 +6,32 @@ var CustomerLocationSchema = new mongoose.Schema({
 
   Customer_id: String,
 
+  Mobile_Number : Number,
+
+  First_Name: String,
+
+  Last_Name: String,
+
   City: String,
+
+  Address: String,
 
   Pincode: String,
 
-  Customer_Location: {
-        type: { type: String },
-        coordinates: []
-    },
   State: String,
 
-  lat: Number,
+  // Customer_Location: {
+  //       type: { type: String },
+  //       coordinates: []
+  //   },
 
-  long: Number,
+  // lat: Number,
+
+  // long: Number,
   
   Location_type:{
     type:  String,
-    Default: "Home"
+    Default: ""
   },
 
   Country: String,
@@ -40,7 +49,8 @@ var CustomerLocationSchema = new mongoose.Schema({
 });
 CustomerLocationSchema.plugin(timestamps);
 
-CustomerLocationSchema.index({ "Customer_Location": "2dsphere" });
+//CustomerLocationSchema.index({ "Customer_Location": "2dsphere" });
+
 mongoose.model('Customerlocation', CustomerLocationSchema);
 
 module.exports = mongoose.model('Customerlocation');

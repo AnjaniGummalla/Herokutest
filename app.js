@@ -7,6 +7,7 @@ var logger = require('morgan');
 var CategoryRouter = require('./api/routes/index');
 var UserRouter = require('./api/routes/Users.routes');
 var Customer_VehicleRouter = require('./api/routes/CustomerVehicle.routes');
+var Customer_LocationRouter = require('./api/routes/Customer_Location.routes');
 var ToplevelCategoryRouter = require('./api/routes/TopLevelCategory.routes');
 var SecondlevelCategoryRouter = require('./api/routes/SecondLevelcCategory.routes');
 var ThirdlevelCategoryRouter = require('./api/routes/ThirdLevelCategory.routes');
@@ -51,6 +52,7 @@ app.use('/api/class', ClassRouter);
 app.use('/api/generation', GenerationRouter);
 app.use('/api/homebanner', HomeBannerRouter);
 app.use('/api/vacalalocation', VacalaLocationRouter);
+app.use('/api/userlocation', Customer_LocationRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
