@@ -39,19 +39,7 @@ const homebannerupdate = async (req, res, next) => {
       error500(res, `Error updating homebanner with id ${err.value}`);
     });
 };
-const newhomebannerupdate = async (req, res, next) => {
-  console.log(req.params.id)
- await HomeBanner.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
-    .then(homebanner => {
-      console.log(homebanner)
-      if (!homebanner) error404(res, "homebanner not found with id " + req.params.id);
-      updateResponse(res, homebanner, 'homebanner updated successfully');
-    })
-    .catch(err => {
-      NotFoundInCatch(res, err, `homebanner not found with id ${err.value}`);
-      error500(res, `Error updating homebanner with id ${err.value}`);
-    });
-};
+
 const deleteDic = (req, res, next) => {
   HomeBanner.findByIdAndRemove(req.params.id)
     .then(HomeBanner => {
