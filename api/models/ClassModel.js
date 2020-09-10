@@ -8,7 +8,7 @@ var ClassSchema = new mongoose.Schema({
   
   Class_Name: {
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 3,
         maxlength: 80

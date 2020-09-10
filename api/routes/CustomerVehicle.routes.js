@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const CustomerVehicleController = require("../controllers/Customer_Vehicle");
+const Customer_VehicleController = require("../controllers/Customer_Vehicle");
 
-router.post("/getlist", CustomerVehicleController.findAll);
-router.post("/create", CustomerVehicleController.create);
-router.delete("/:id", CustomerVehicleController.delete);
+router.post("/getlist", Customer_VehicleController.findAll);
+router.post('/update/:id', Customer_VehicleController.vehicleupdate);
+//router.post("/statuschange", Customer_VehicleController.defaultVehiclechange);
+router.post("/create", Customer_VehicleController.create);
+router.delete("/:id", Customer_VehicleController.delete);
 
 module.exports = router;

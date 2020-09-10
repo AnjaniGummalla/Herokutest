@@ -3,7 +3,7 @@ var timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 var Customer_VehicleSchema = new mongoose.Schema({   
   
-  Customer_Id: {
+  Customer_id: {
         type: String,
         required: true,
         trim: true,
@@ -20,41 +20,33 @@ var Customer_VehicleSchema = new mongoose.Schema({
     },
 
   Cus_Vehicle_Type:{
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 1,
-        maxlength: 80
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicletype',
+        required: true
     },
 
   Cus_Vehicle_Model: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80,
-        unique: true
+        type: Schema.Types.ObjectId,
+        ref: 'Model',
+        required: true
     },
 
   Cus_Vehicle_Brand: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
+        type: Schema.Types.ObjectId,
+        ref: 'Brand',
+        required: true
     },
 
   Cus_Vehicle_Trim: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Trim',
+        required: true
     },
   
   Cus_Vehicle_Generation: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
+        type: Schema.Types.ObjectId,
+        ref: 'Generation',
+        required: true
     },
 
 });

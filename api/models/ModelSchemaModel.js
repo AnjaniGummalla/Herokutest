@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var ModelSchema = new mongoose.Schema({   
   
-  Model_Id: mongoose.Types.ObjectId(),
+  //Model_Id: mongoose.Types.ObjectId(),
   
   Model_Name: {
         type: String,

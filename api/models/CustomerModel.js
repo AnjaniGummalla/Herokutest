@@ -27,7 +27,7 @@ var CustomerSchema = new mongoose.Schema({
         trim: true,
         minlength: 3,
         maxlength: 80,
-        unique: true
+        //unique: true
     },
 
   Password: {

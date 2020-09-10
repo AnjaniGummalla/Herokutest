@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var TrimSchema = new mongoose.Schema({   
   
-  Trim_Id: mongoose.Types.ObjectId(),
+  //Trim_Id: mongoose.Types.ObjectId(),
   
   Trim_Name: {
         type: String,

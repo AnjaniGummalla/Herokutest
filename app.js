@@ -22,7 +22,9 @@ const BrandRouter = require('./api/routes/Brand.routes');
 const ClassRouter = require('./api/routes/Class.routes');
 const GenerationRouter = require('./api/routes/Generation.routes');
 const HomeBannerRouter = require('./api/routes/HomeBanner.routes');
+const VehicleModelRouter = require('./api/routes/VehicleModel.routes');
 const VacalaLocationRouter = require('./api/routes/VacalaLocation.routes');
+const TrimRouter = require('./api/routes/Trim.routes');
 var app = express();
 //DB connection
 const Mongoose = require("./databases/dbconnection");
@@ -53,6 +55,8 @@ app.use('/api/generation', GenerationRouter);
 app.use('/api/homebanner', HomeBannerRouter);
 app.use('/api/vacalalocation', VacalaLocationRouter);
 app.use('/api/userlocation', Customer_LocationRouter);
+app.use('/api/vehiclemodel', VehicleModelRouter);
+app.use('/api/trim', TrimRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

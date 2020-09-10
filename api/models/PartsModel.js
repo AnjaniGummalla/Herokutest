@@ -14,12 +14,12 @@ var PartsSchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Part_Price: {
+Part_Price: {
         type: Number,
         required: true
     },
 
-  Part_Number:{
+ Part_Number:{
         type: String,
         required: true,
         trim: true,
@@ -57,12 +57,12 @@ var PartsSchema = new mongoose.Schema({
         ref: 'Second_Level_Category',
         required: true
     },
-    Part_second_cat_id: {
+    Part_third_cat_id: {
         type: Schema.Types.ObjectId,
         ref: 'Third_Level_Category',
         required: true
     },
-     Part_second_origin_id: {
+     Part_origin_id: {
         type: Schema.Types.ObjectId,
         ref: 'Origin',
         required: true

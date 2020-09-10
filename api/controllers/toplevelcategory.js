@@ -1,5 +1,5 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse } = require('../lib/response');
+const { getAllResponse, createResponse,updateResponse,response } = require('../lib/response');
 
 const ToplevelCategory = require("../models/ToplevelCategoryModel");
 
@@ -26,12 +26,24 @@ const create = (req, res, next) => {
     });
 };
 
+const categoryupdate = (req, res, next) => {
+  ToplevelCategory.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
+    .then(Category => {
+      if (!Category) error404(res, "Category not found with id " + req.params.id);
+      updateResponse(res, Category, 'Category updated successfully');
+    })
+    .catch(err => {
+      NotFoundInCatch(res, err, `Category not found with id ${err.value}`);
+      error500(res, `Error updating Category with id ${err.value}`);
+    });
+};
+
 const deleteDic = (req, res, next) => {
   ToplevelCategory.findByIdAndRemove(req.params.id)
     .then(ToplevelCategory => {
       if (!ToplevelCategory)
         error404(res, "ToplevelCategory not found with id " + req.params.id);
-      res.send({ message: "ToplevelCategory deleted successfully!" });
+     response(res, 'Category Deleted successfully');
     })
     .catch(err => {
       NotFoundInCatch(res, err, `ToplevelCategory not found with id ${err.value}`);
@@ -42,5 +54,6 @@ const deleteDic = (req, res, next) => {
 module.exports = {
   findAll,
   create,
+  categoryupdate,
   delete: deleteDic
 };

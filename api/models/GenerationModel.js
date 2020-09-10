@@ -8,7 +8,7 @@ var GenerationSchema = new mongoose.Schema({
   
   Generation_Name: {
         type: String,
-        required: true,
+        //required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
