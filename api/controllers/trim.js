@@ -1,10 +1,10 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse } = require('../lib/response');
+const { getAllResponse, createResponse,updateResponse,response} = require('../lib/response');
 
 const Trim = require("../models/TrimModel");
 
-const findAll = (req, res, next) => {
-  Trim.find()
+const findmodel = (req, res, next) => {
+  Trim.find({Model_Id:req.body.Model_Id})
     .then(Trim => {
         getAllResponse(res, Trim);
     })
@@ -26,12 +26,26 @@ const create = (req, res, next) => {
     });
 };
 
+const trimupdate = async (req, res, next) => {
+  console.log(req.params.id)
+ await Trim.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
+    .then(trim => {
+      console.log(trim)
+      if (!trim) error404(res, "trim not found with id " + req.params.id);
+      updateResponse(res, trim, 'trim updated successfully');
+    })
+    .catch(err => {
+      NotFoundInCatch(res, err, `trim not found with id ${err.value}`);
+      error500(res, `Error updating trim with id ${err.value}`);
+    });
+};
+
 const deleteDic = (req, res, next) => {
   Trim.findByIdAndRemove(req.params.id)
     .then(Trim => {
       if (!Trim)
         error404(res, "Trim not found with id " + req.params.id);
-      res.send({ message: "Trim deleted successfully!" });
+      response(res, 'Trim Deleted successfully');
     })
     .catch(err => {
       NotFoundInCatch(res, err, `Trim not found with id ${err.value}`);
@@ -40,7 +54,8 @@ const deleteDic = (req, res, next) => {
 };
 
 module.exports = {
-  findAll,
+  findmodel,
   create,
+  trimupdate,
   delete: deleteDic
 };

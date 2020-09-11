@@ -1,10 +1,10 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse } = require('../lib/response');
+const { getAllResponse, createResponse,response } = require('../lib/response');
 
 const Generation = require("../models/GenerationModel");
 
-const findAll = (req, res, next) => {
-  Generation.find()
+const findmodel = (req, res, next) => {
+  Generation.find({Model_Id:req.body.Model_Id})
     .then(Generation => {
         getAllResponse(res, Generation);
     })
@@ -31,7 +31,7 @@ const deleteDic = (req, res, next) => {
     .then(Generation => {
       if (!Generation)
         error404(res, "Generation not found with id " + req.params.id);
-      res.send({ message: "Generation deleted successfully!" });
+     response(res, 'Generation Deleted successfully');
     })
     .catch(err => {
       NotFoundInCatch(res, err, `Generation not found with id ${err.value}`);
@@ -40,7 +40,7 @@ const deleteDic = (req, res, next) => {
 };
 
 module.exports = {
-  findAll,
+  findmodel,
   create,
   delete: deleteDic
 };

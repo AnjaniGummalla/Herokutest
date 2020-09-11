@@ -1,5 +1,5 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse } = require('../lib/response');
+const { getAllResponse, createResponse,updateResponse,response} = require('../lib/response');
 
 const Brand = require("../models/BrandModel");
 
@@ -26,12 +26,26 @@ const create = (req, res, next) => {
     });
 };
 
+const brandupdate = async (req, res, next) => {
+  console.log(req.params.id)
+ await Brand.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
+    .then(brand => {
+      console.log(brand)
+      if (!brand) error404(res, "brand not found with id " + req.params.id);
+      updateResponse(res, brand, 'brand updated successfully');
+    })
+    .catch(err => {
+      NotFoundInCatch(res, err, `brand not found with id ${err.value}`);
+      error500(res, `Error updating brand with id ${err.value}`);
+    });
+};
+
 const deleteDic = (req, res, next) => {
   Brand.findByIdAndRemove(req.params.id)
     .then(Brand => {
       if (!Brand)
         error404(res, "Brand not found with id " + req.params.id);
-      res.send({ message: "Brand deleted successfully!" });
+        response(res, 'Brand Deleted successfully');
     })
     .catch(err => {
       NotFoundInCatch(res, err, `Brand not found with id ${err.value}`);
@@ -42,5 +56,6 @@ const deleteDic = (req, res, next) => {
 module.exports = {
   findAll,
   create,
+  brandupdate,
   delete: deleteDic
 };

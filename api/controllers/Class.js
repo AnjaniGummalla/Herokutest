@@ -1,10 +1,10 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
-const { getAllResponse, createResponse } = require('../lib/response');
+const { getAllResponse, createResponse,updateResponse,response} = require('../lib/response');
 
 const Class = require("../models/ClassModel");
 
 const findAll = (req, res, next) => {
-  Class.find()
+  Class.find({Vehicle_Type:req.body.Vehicle_Type})
     .then(Class => {
         getAllResponse(res, Class);
     })
@@ -26,12 +26,26 @@ const create = (req, res, next) => {
     });
 };
 
+const classupdate = async (req, res, next) => {
+  console.log(req.params.id)
+ await Class.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
+    .then(classes => {
+      console.log(classes)
+      if (!classes) error404(res, "classes not found with id " + req.params.id);
+      updateResponse(res, classes, 'classes updated successfully');
+    })
+    .catch(err => {
+      NotFoundInCatch(res, err, `classes not found with id ${err.value}`);
+      error500(res, `Error updating classes with id ${err.value}`);
+    });
+};
+
 const deleteDic = (req, res, next) => {
   Class.findByIdAndRemove(req.params.id)
     .then(Class => {
       if (!Class)
         error404(res, "Class not found with id " + req.params.id);
-      res.send({ message: "Class deleted successfully!" });
+       response(res, 'Class Deleted successfully');
     })
     .catch(err => {
       NotFoundInCatch(res, err, `Class not found with id ${err.value}`);
@@ -42,5 +56,6 @@ const deleteDic = (req, res, next) => {
 module.exports = {
   findAll,
   create,
+  classupdate,
   delete: deleteDic
 };
