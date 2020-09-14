@@ -34,14 +34,14 @@ Part_Price: {
         maxlength: 80
     },
     Dimension:{
-        type: Number,
+        type: String,
         required: false,
         trim: true,
         minlength: 3,
         maxlength: 80
     },
     Weight:{
-        type: Number,
+        type: String,
         required: false,
         trim: true,
         minlength: 3,

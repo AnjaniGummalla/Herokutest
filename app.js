@@ -25,6 +25,7 @@ const HomeBannerRouter = require('./api/routes/HomeBanner.routes');
 const VehicleModelRouter = require('./api/routes/VehicleModel.routes');
 const VacalaLocationRouter = require('./api/routes/VacalaLocation.routes');
 const TrimRouter = require('./api/routes/Trim.routes');
+const OriginRouter = require('./api/routes/Origin.routes');
 var app = express();
 //DB connection
 const Mongoose = require("./databases/dbconnection");
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/topcategory', ToplevelCategoryRouter);
 app.use('/api/secondcategory', SecondlevelCategoryRouter);
+app.use('/api/thirdcategory', ThirdlevelCategoryRouter);
 app.use('/api/vehicletype', VehicletypeRouter);
 app.use('/api/users', UserRouter);
 app.use('/api/products', productRouter);
@@ -57,6 +59,7 @@ app.use('/api/vacalalocation', VacalaLocationRouter);
 app.use('/api/userlocation', Customer_LocationRouter);
 app.use('/api/vehiclemodel', VehicleModelRouter);
 app.use('/api/trim', TrimRouter);
+app.use('/api/origin', OriginRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

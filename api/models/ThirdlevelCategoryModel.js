@@ -22,14 +22,6 @@ var Third_Level_CategorySchema = new mongoose.Schema({
         maxlength: 80
     },
 
-  Top_level_cat_name:{
-        type: String,
-        required: false,
-        trim: true,
-        minlength: 3,
-        maxlength: 80
-    },
-
   Second_level_cat_id:  {
         type: Schema.Types.ObjectId,
         ref: 'Second_Level_Category',

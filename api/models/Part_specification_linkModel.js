@@ -27,6 +27,6 @@ var Part_specification_linkSchema = new mongoose.Schema({
 
 Part_specification_linkSchema.plugin(timestamps);
 
-mongoose.model('Part_Replacement', Part_specification_linkSchema);
+mongoose.model('Part_Specification', Part_specification_linkSchema);
 
-module.exports = mongoose.model('Part_Replacement');
+module.exports = mongoose.model('Part_Specification');

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var Vendo_PartSchema = new mongoose.Schema({   
   
- Part_id:{
+ Part_Specification_id:{
         type: Schema.Types.ObjectId,
         ref: 'Parts',
         required: true
