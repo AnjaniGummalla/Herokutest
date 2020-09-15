@@ -12,7 +12,7 @@ const {
   response
 } = require("../lib/response");
 
-const Products = require("../models/PartsModel");
+const Products = require("../models/Part_CompatabilityModel");
 
 const create = (req, res, next) => {
   const products = new Products(req.body);

@@ -4,7 +4,7 @@ const PartsController = require("../controllers/parts");
 
 router.get('/getlist', PartsController.findAll);
 
-router.post('/', PartsController.getProduct);
+router.post('/productlist', PartsController.getProduct);
 
 router.post('/create', PartsController.create);
 
