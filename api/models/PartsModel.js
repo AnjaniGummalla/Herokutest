@@ -47,6 +47,11 @@ Part_Price: {
         minlength: 3,
         maxlength: 80
     },
+      Vehicle_Type: {
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicletype',
+        required: true
+    },
     Part_top_cat_id: {
         type: Schema.Types.ObjectId,
         ref: 'Top_Level_Category',

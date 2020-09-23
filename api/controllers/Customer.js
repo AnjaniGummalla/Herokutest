@@ -8,12 +8,12 @@ const User = require('../models/CustomerModel')
 //const Customer = require("../models/CustomerModel");
 
 const findAll = (req, res, next) => {
-  Customer.find()
-    .then(Customer => {
-        getAllResponse(res, Customer);
+  User.find()
+    .then(User => {
+        getAllResponse(res, User);
     })
     .catch(err => { 
-        error500(res, err.message || "Some error occurred while retrieving Customer.");
+        error500(res, err.message || "Some error occurred while retrieving User.");
     });
 };
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const PartCompatabilityController = require("../controllers/partcompatability");
 
 router.get('/getlist', PartCompatabilityController.findAll);
