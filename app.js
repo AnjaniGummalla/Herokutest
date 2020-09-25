@@ -66,7 +66,7 @@ app.use('/api/origin', OriginRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-app.get('/testing', function (req, res) {
+app.get('/api/testing', function (req, res) {
   res.send('hello world')
 })
 // error handler
