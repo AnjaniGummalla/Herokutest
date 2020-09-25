@@ -1,7 +1,7 @@
 const { NotFoundInCatch, error500, error404, error422 } = require('../lib/error');
 const { getAllResponse, createResponse,response,updateResponse} = require('../lib/response');
 
-const HomeBanner = require("../models/HomeBannerModel");
+const HomeBanner = require("../models/HomebannerModel");
 
 const findAll = (req, res, next) => {
   HomeBanner.find()
