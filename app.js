@@ -26,7 +26,7 @@ const VehicleModelRouter = require('./api/routes/VehicleModel.routes');
 const VacalaLocationRouter = require('./api/routes/VacalaLocation.routes');
 const TrimRouter = require('./api/routes/Trim.routes');
 const OriginRouter = require('./api/routes/Origin.routes');
-//const PartCompatabilityRouter = require('./api/routes/PartCompartability.routes');
+const PartCompatabilityRouter = require('./api/routes/PartCompartability.routes');
 var app = express();
 //DB connection
 const Mongoose = require("./databases/dbconnection");
@@ -60,7 +60,7 @@ app.use('/api/vacalalocation', VacalaLocationRouter);
 app.use('/api/userlocation', Customer_LocationRouter);
 app.use('/api/vehiclemodel', VehicleModelRouter);
 app.use('/api/trim', TrimRouter);
-//app.use('/api/compatability', PartCompatabilityRouter);
+app.use('/api/compatability', PartCompatabilityRouter);
 app.use('/api/origin', OriginRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
