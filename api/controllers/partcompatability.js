@@ -33,8 +33,8 @@ const create = (req, res, next) => {
 const findAll = (req, res, next) => {
   Products.find()
   .where(filter)
-.populate('Part_origin_id')
-.populate('Part_third_cat_id')
+.populate('Part_Id')
+.populate('Model_Id')
     .then(products => {
       getAllResponse(res, products);
     })
@@ -60,8 +60,8 @@ const getProduct = (req, res, next) => {
   .sort(sort)
   .skip(pageOptions.page * pageOptions.limit)
   .limit(pageOptions.limit)
- .populate('Part_origin_id')
-  .populate('Part_third_cat_id')
+ .populate('Part_Id')
+  .populate('Model_Id')
   .then(products => {
     Products.collection.countDocuments(filter).then(totalCount => {
       const data = {
@@ -83,8 +83,8 @@ const getProduct = (req, res, next) => {
 
 const findOne = (req, res, next) => {
   Products.findById(req.params.id)
-  .populate('Part_origin_id')
-  .populate('Part_third_cat_id')
+  .populate('Part_Id')
+  .populate('Model_Id')
     .then(product => {
       if (!product) error404(res, "Product not found with id " + req.params.id);
       getOneResponse(res, product);

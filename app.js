@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var CategoryRouter = require('./api/routes/index');
 var UserRouter = require('./api/routes/Users.routes');
+var AdminRouter = require('./api/routes/Admin.routes');
 var Customer_VehicleRouter = require('./api/routes/CustomerVehicle.routes');
 var Customer_LocationRouter = require('./api/routes/Customer_Location.routes');
 var ToplevelCategoryRouter = require('./api/routes/TopLevelCategory.routes');
@@ -46,6 +47,7 @@ app.use('/api/secondcategory', SecondlevelCategoryRouter);
 app.use('/api/thirdcategory', ThirdlevelCategoryRouter);
 app.use('/api/vehicletype', VehicletypeRouter);
 app.use('/api/users', UserRouter);
+app.use('/api/admin', AdminRouter);
 app.use('/api/products', productRouter);
 app.use('/api/dictionary', dictionaryRouter);
 app.use('/api/cart', cartRouter);
