@@ -5,13 +5,17 @@ const Schema = mongoose.Schema;
 var BrandSchema = new mongoose.Schema({   
   
   //Brand_Id: mongoose.Types.ObjectId(),
-  
   Brand_Name: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
         maxlength: 80
+    },
+    Vehicle_Type: {
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicletype',
+        required: true
     },
   Brand_Logo_Path: {
         type: String,

@@ -4,7 +4,7 @@ const { getAllResponse, createResponse,updateResponse,response} = require('../li
 const Brand = require("../models/BrandModel");
 
 const findAll = (req, res, next) => {
-  Brand.find()
+  Brand.find({Vehicle_Type:req.body.Vehicle_Type})
     .then(Brand => {
         getAllResponse(res, Brand);
     })
