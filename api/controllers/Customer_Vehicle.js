@@ -13,6 +13,18 @@ const findAll = (req, res, next) => {
     });
 };
 
+const findvehicle = async (req, res, next) => {
+  try{
+    var fetched_data = await Customer_Vehicle.find({Customer_id:req.body.Customer_id,Cus_Vehicle_Type:req.body.Vehicle_type});
+        console.log(fetched_data)
+        response(res,fetched_data, "Vehicle data fetched successfully");
+    
+  }
+  catch(e) {
+        error500(res, err.message || "Some error occurred while retrieving Customer_Vehicle.");
+    };
+};
+
 const create = (req, res, next) => {
   const customer_Vehicle = new Customer_Vehicle(req.body);
   customer_Vehicle
@@ -70,7 +82,7 @@ const deletevehicle = (req, res, next) => {
 module.exports = {
   findAll,
   create,
-  vehicleupdate,
+  vehicleupdate,findvehicle,
   //defaultVehiclechange,
   delete: deletevehicle
 };
